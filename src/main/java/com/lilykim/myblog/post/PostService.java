@@ -1,6 +1,7 @@
 package com.lilykim.myblog.post;
 
 import com.google.api.core.ApiFuture;
+import com.google.cloud.Timestamp;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
@@ -24,7 +25,17 @@ public class PostService {
         List<QueryDocumentSnapshot> documents = future.get().getDocuments();
 
         for (QueryDocumentSnapshot document : documents) {
+            Timestamp createdTime = (Timestamp) document.get("createdTime");
+            createdTime.toDate();
             list.add(document.toObject(Post.class));
+        }
+
+        for (Post p : list) {
+            Timestamp convertedCt = p.getCreatedTime();
+            p.setCreatedTimeC(convertedCt.toDate());
+
+            Timestamp convertedMt = p.getModifiedTime();
+            p.setModifiedTimeC(convertedMt.toDate());
         }
 
         return list;

@@ -1,7 +1,8 @@
 package com.lilykim.myblog.post;
 
-import com.google.cloud.Date;
 import com.google.cloud.Timestamp;
+
+import java.util.Date;
 
 public class Post {
 
@@ -10,8 +11,10 @@ public class Post {
     private String title;
     private String[] category;
     private String content;
-    private Date createdTime;
-    private Date modifiedTime;
+    private Timestamp createdTime;
+    private Timestamp modifiedTime;
+    private Date createdTimeC;
+    private Date modifiedTimeC;
     private int delFlag;
 
     public long getId() {
@@ -54,20 +57,36 @@ public class Post {
         this.content = content;
     }
 
-    public Date getCreatedTime() {
+    public Timestamp getCreatedTime() {
         return createdTime;
     }
 
-    public void setCreatedTime(Date createdTime) {
+    public void setCreatedTime(Timestamp createdTime) {
         this.createdTime = createdTime;
     }
 
-    public Date getModifiedTime() {
+    public Timestamp getModifiedTime() {
         return modifiedTime;
     }
 
-    public void setModifiedTime(Date modifiedTime) {
+    public void setModifiedTime(Timestamp modifiedTime) {
         this.modifiedTime = modifiedTime;
+    }
+
+    public Date getCreatedTimeC() {
+        return createdTimeC;
+    }
+
+    public void setCreatedTimeC(Date createTimeC) {
+        this.createdTimeC = createTimeC;
+    }
+
+    public Date getModifiedTimeC() {
+        return modifiedTimeC;
+    }
+
+    public void setModifiedTimeC(Date modifiedTimeC) {
+        this.modifiedTimeC = modifiedTimeC;
     }
 
     public int getDelFlag() {
