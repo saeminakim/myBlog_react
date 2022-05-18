@@ -20,4 +20,9 @@ public class PostController {
     public void createPost(@RequestBody Post post) throws ExecutionException, InterruptedException {
         postService.createPost(post);
     }
+
+    @GetMapping(value = "/posts/{id}")
+    public Post getPost(@PathVariable("id") String id) throws ExecutionException, InterruptedException {
+        return postService.getPost(id);
+    }
 }

@@ -1,7 +1,6 @@
 package com.lilykim.myblog.post;
 
 import com.google.api.core.ApiFuture;
-import com.google.cloud.Timestamp;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
 import org.springframework.stereotype.Service;
@@ -38,5 +37,21 @@ public class PostService {
         // 필드에 ID 추가
         apiFuture.get().update("id", apiFuture.get().getId());
 
+    }
+
+    public Post getPost(String id) throws ExecutionException, InterruptedException {
+
+        Firestore firestore = FirestoreClient.getFirestore();
+        DocumentReference documentReference = firestore.collection(COLLECTION_NAME).document(id);
+        ApiFuture<DocumentSnapshot> apiFuture = documentReference.get();
+        DocumentSnapshot documentSnapshot = apiFuture.get();
+        Post post = new Post();
+
+        if (documentSnapshot.exists()) {
+            post = documentSnapshot.toObject(Post.class);
+            return post;
+        } else {
+            return null;
+        }
     }
 }
