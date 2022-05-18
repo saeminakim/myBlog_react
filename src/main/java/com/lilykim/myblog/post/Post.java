@@ -6,22 +6,19 @@ import java.util.Date;
 
 public class Post {
 
-    private long id;
+    private String id;
     private String author;
     private String title;
     private String[] category;
     private String content;
-    private Timestamp createdTime;
-    private Timestamp modifiedTime;
-    private Date createdTimeC;
-    private Date modifiedTimeC;
-    private int delFlag;
+    private String createdTime;
+    private int delFlag = 0;
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -57,36 +54,12 @@ public class Post {
         this.content = content;
     }
 
-    public Timestamp getCreatedTime() {
+    public String getCreatedTime() {
         return createdTime;
     }
 
-    public void setCreatedTime(Timestamp createdTime) {
+    public void setCreatedTime(String createdTime) {
         this.createdTime = createdTime;
-    }
-
-    public Timestamp getModifiedTime() {
-        return modifiedTime;
-    }
-
-    public void setModifiedTime(Timestamp modifiedTime) {
-        this.modifiedTime = modifiedTime;
-    }
-
-    public Date getCreatedTimeC() {
-        return createdTimeC;
-    }
-
-    public void setCreatedTimeC(Date createTimeC) {
-        this.createdTimeC = createTimeC;
-    }
-
-    public Date getModifiedTimeC() {
-        return modifiedTimeC;
-    }
-
-    public void setModifiedTimeC(Date modifiedTimeC) {
-        this.modifiedTimeC = modifiedTimeC;
     }
 
     public int getDelFlag() {

@@ -1,10 +1,8 @@
 package com.lilykim.myblog.post;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -13,13 +11,13 @@ public class PostController {
 
     @Autowired PostService postService;
 
-    @GetMapping("hello")
-    public List<String> hello() {
-        return Arrays.asList("hello", "world");
-    }
-
-    @GetMapping("posts")
+    @GetMapping(value = "/posts")
     public List<Post> getPosts() throws ExecutionException, InterruptedException {
         return postService.getPosts();
+    }
+
+    @PostMapping(value = "/createPost")
+    public void createPost(@RequestBody Post post) throws ExecutionException, InterruptedException {
+        postService.createPost(post);
     }
 }
